@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="id" class="scroll-smooth overflow-x-hidden">
+<html lang="id" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>KHASANAH — Bekal Cerdas Pelajar Prasejahtera (SIMULASI)</title>
   <meta name="description" content="KHASANAH: Program Bekal Cerdas — perlengkapan sekolah dan kelas belajar untuk pelajar prasejahtera & dhuafa dengan laporan ZISWAF transparan." />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌙</text></svg>" />
@@ -38,13 +38,22 @@
     @layer components {
       .inp { @apply w-full rounded-xl border border-purple-200 bg-white px-3.5 py-2.5 text-sm transition focus:outline-none focus:ring-2 focus:ring-sunMain; }
       .lbl { @apply block text-xs sm:text-sm font-semibold text-slate-700 mb-1; }
-      .card { @apply bg-white border border-purple-100 rounded-2xl p-5 sm:p-6 shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-0.5; }
+      .card { @apply bg-white border border-purple-100 rounded-2xl p-4 sm:p-6 shadow-sm transition-all duration-300; }
       .tag { @apply text-xs font-extrabold uppercase tracking-wider text-sunMain; }
-      .btn { @apply bg-gradient-to-r from-sunMain to-sunPink hover:from-sunDeep hover:to-sunMain text-white font-bold rounded-xl text-sm transition-all duration-300 px-5 py-3 shadow-sm hover:shadow cursor-pointer active:scale-[0.99]; }
+      .btn { @apply bg-gradient-to-r from-sunMain to-sunPink hover:from-sunDeep hover:to-sunMain text-white font-bold rounded-xl text-sm transition-all duration-300 px-5 py-3 shadow-sm cursor-pointer active:scale-[0.99]; }
       .h2 { @apply text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1; }
     }
   </style>
   <style>
+    html, body {
+      max-width: 100%;
+      overflow-x: clip;
+      -webkit-overflow-scrolling: touch;
+    }
+    section {
+      scroll-margin-top: 5.5rem;
+    }
+
     @keyframes floatSlow {
       0%, 100% { transform: translateY(0px) rotate(0deg); }
       50% { transform: translateY(-10px) rotate(3deg); }
@@ -58,8 +67,8 @@
 
     .reveal {
       opacity: 0;
-      transform: translateY(22px);
-      transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+      transform: translateY(14px);
+      transition: opacity 0.45s ease-out, transform 0.45s ease-out;
     }
     .reveal.visible {
       opacity: 1;
@@ -72,7 +81,7 @@
     }
   </style>
 </head>
-<body class="bg-sunCream text-slate-800 antialiased overflow-x-hidden max-w-full">
+<body class="bg-sunCream text-slate-800 antialiased">
 
   <svg width="0" height="0" style="position:absolute">
     <symbol id="lg-khasanah" viewBox="0 0 64 64">
@@ -95,27 +104,27 @@
     SIMULASI – TUGAS KULIAH ISLAMIC PHILANTHROPY UIN SUKA · Semua data fiktif, tidak menerima uang sungguhan
   </div>
 
-  <header class="bg-white/95 backdrop-blur border-b border-purple-950/10 sticky top-0 z-40 transition-shadow">
-    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
-      <a href="#beranda" class="flex items-center gap-3 min-w-0 group" aria-label="KHASANAH beranda">
-        <svg class="w-10 h-10 shrink-0 transition-transform duration-300 group-hover:scale-105"><use href="#lg-khasanah"/></svg>
+  <header class="bg-white/95 backdrop-blur border-b border-purple-950/10 sticky top-0 z-40">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-2">
+      <a href="#beranda" class="flex items-center gap-2.5 min-w-0 group" aria-label="KHASANAH beranda">
+        <svg class="w-9 h-9 sm:w-10 sm:h-10 shrink-0 transition-transform duration-300 group-hover:scale-105"><use href="#lg-khasanah"/></svg>
         <div class="min-w-0">
-          <span class="font-arabicDisplay text-2xl text-sunDeep font-bold block leading-none truncate">KHASANAH</span>
-          <span class="text-[11px] font-medium text-slate-500 block truncate">Zakat • Infak • Sedekah • Wakaf</span>
+          <span class="font-arabicDisplay text-xl sm:text-2xl text-sunDeep font-bold block leading-none truncate">KHASANAH</span>
+          <span class="text-[10px] sm:text-[11px] font-medium text-slate-500 block truncate">Zakat • Infak • Sedekah • Wakaf</span>
         </div>
       </a>
       <nav id="navDesktop" class="hidden xl:flex items-center gap-4 text-sm font-semibold text-slate-700" aria-label="Navigasi utama"></nav>
-      <a href="#donasi-kampanye" class="shrink-0 bg-gradient-to-r from-sunMain to-sunPink hover:opacity-90 text-white text-xs sm:text-sm font-bold px-3.5 py-2 rounded-xl transition shadow-sm">Coba Donasi</a>
+      <a href="#donasi-kampanye" class="shrink-0 bg-gradient-to-r from-sunMain to-sunPink hover:opacity-90 text-white text-xs sm:text-sm font-bold px-3 py-2 rounded-xl transition shadow-sm">Coba Donasi</a>
     </div>
-    <div id="navMobile" class="xl:hidden border-t border-purple-100 bg-sunSoft/60 px-3 py-2 flex flex-wrap justify-center gap-1.5 text-[11px] font-semibold text-sunDeep"></div>
+    <div id="navMobile" class="xl:hidden border-t border-purple-100 bg-sunSoft/60 px-2.5 py-2 flex flex-wrap justify-center gap-1.5 text-[11px] font-semibold text-sunDeep"></div>
   </header>
 
-  <main class="overflow-x-hidden">
+  <main class="w-full overflow-x-clip">
 
     <!-- 1. BERANDA -->
-    <section id="beranda" class="relative bg-gradient-to-br from-sunDark via-sunDeep to-sunPink text-white py-12 sm:py-16 overflow-hidden">
+    <section id="beranda" class="relative bg-gradient-to-br from-sunDark via-sunDeep to-sunPink text-white py-10 sm:py-16 overflow-x-clip">
       <div class="absolute inset-0 islamic-pattern pointer-events-none"></div>
-      <svg class="absolute -right-20 -top-20 w-80 h-80 text-amber-300/10 anim-spin-slow pointer-events-none" viewBox="0 0 200 200" fill="none">
+      <svg class="hidden sm:block absolute -right-20 -top-20 w-80 h-80 text-amber-300/10 anim-spin-slow pointer-events-none" viewBox="0 0 200 200" fill="none">
         <rect x="35" y="35" width="130" height="130" stroke="currentColor" stroke-width="2"/>
         <rect x="35" y="35" width="130" height="130" stroke="currentColor" stroke-width="2" transform="rotate(45 100 100)"/>
         <circle cx="100" cy="100" r="85" stroke="currentColor" stroke-width="1.5" stroke-dasharray="6 6"/>
@@ -124,15 +133,15 @@
         <path d="M42 12a21 21 0 1 0 0 40a20 20 0 0 1 0-40z"/>
       </svg>
 
-      <div class="relative max-w-6xl mx-auto px-4 space-y-10">
-        <div class="grid lg:grid-cols-12 gap-8 items-center">
-          <div class="lg:col-span-7 space-y-4">
-            <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-amber-300/40 text-amber-200 text-xs font-semibold px-3.5 py-1.5 rounded-full">
+      <div class="relative max-w-6xl mx-auto px-4 space-y-8 sm:space-y-10">
+        <div class="grid lg:grid-cols-12 gap-6 sm:gap-8 items-center">
+          <div class="lg:col-span-7 space-y-4 min-w-0">
+            <div class="inline-flex flex-wrap items-center gap-2 bg-white/10 backdrop-blur-sm border border-amber-300/40 text-amber-200 text-xs font-semibold px-3.5 py-1.5 rounded-full max-w-full">
               <span class="font-arabicBody text-base leading-none" lang="ar" dir="rtl">خَزَائِنُ الرَّحْمَةِ وَالْبَرَكَةِ</span>
               <span>• Khazanah Rahmat &amp; Keberkahan</span>
             </div>
-            <h1 class="font-arabicDisplay text-4xl sm:text-6xl text-amber-300 leading-snug break-words drop-shadow-sm">KHASANAH</h1>
-            <p class="text-lg sm:text-xl font-bold text-white leading-snug">
+            <h1 class="font-arabicDisplay text-4xl sm:text-6xl text-amber-300 leading-snug break-words">KHASANAH</h1>
+            <p class="text-base sm:text-xl font-bold text-white leading-snug">
               Program “Bekal Cerdas”: perlengkapan sekolah, rak pustaka, dan kelas belajar bagi pelajar keluarga prasejahtera &amp; dhuafa di Yogyakarta.
             </p>
             <p class="text-sm sm:text-base text-purple-100/95 leading-relaxed">
@@ -150,7 +159,7 @@
             </div>
           </div>
 
-          <div class="lg:col-span-5 bg-white text-slate-800 rounded-2xl p-5 sm:p-6 shadow-xl border-t-4 border-amber-400 space-y-4">
+          <div class="lg:col-span-5 bg-white text-slate-800 rounded-2xl p-5 sm:p-6 shadow-xl border-t-4 border-amber-400 space-y-4 min-w-0">
             <div class="border-b border-purple-100 pb-3">
               <span class="text-[11px] font-extrabold uppercase tracking-wider text-sunMain">Visi</span>
               <p class="text-base sm:text-lg font-bold text-sunDeep mt-1 leading-snug">
@@ -169,7 +178,7 @@
           </div>
         </div>
 
-        <div id="zakat-maal" class="reveal bg-white text-slate-800 rounded-2xl p-5 sm:p-7 shadow-md">
+        <div id="zakat-maal" class="reveal bg-white text-slate-800 rounded-2xl p-5 sm:p-7 shadow-md min-w-0">
           <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 pb-4 border-b border-purple-100">
             <div>
               <span class="tag">Edukasi Singkat</span>
@@ -199,7 +208,7 @@
     </section>
 
     <!-- 2. PROFIL & PENGURUS -->
-    <section id="profil-pengurus" class="reveal max-w-6xl mx-auto px-4 py-12 sm:py-16">
+    <section id="profil-pengurus" class="reveal max-w-6xl mx-auto px-4 py-10 sm:py-16">
       <div class="mb-8">
         <span class="tag">Profil &amp; Pengurus</span>
         <h2 class="h2">Siapa di Balik KHASANAH</h2>
@@ -207,8 +216,8 @@
           KHASANAH adalah lembaga amil fiktif yang didirikan untuk tugas <strong>CPMK 2 mata kuliah Islamic Philanthropy</strong>, Prodi Ekonomi Syariah, FEBI UIN Sunan Kalijaga Yogyakarta.
         </p>
       </div>
-      <div class="grid lg:grid-cols-12 gap-8 items-start">
-        <div class="lg:col-span-6 card space-y-4">
+      <div class="grid lg:grid-cols-12 gap-6 sm:gap-8 items-start">
+        <div class="lg:col-span-6 card space-y-4 min-w-0">
           <h3 class="text-lg font-bold text-sunDeep">Fondasi Tata Kelola</h3>
           <p class="text-sm text-slate-600 leading-relaxed">
             <strong>KHASANAH</strong> memisahkan kas Zakat, Infak/Sedekah, dan Wakaf secara ketat, mencatat secara rutin, dan menyalurkan tepat sasaran kepada asnaf fakir/miskin serta pelajar membutuhkan.
@@ -224,12 +233,12 @@
             <span id="dpsNama" class="font-bold text-sunMain"></span>
           </div>
         </div>
-        <div class="lg:col-span-6 space-y-5" id="pengurusWrap"></div>
+        <div class="lg:col-span-6 space-y-5 min-w-0" id="pengurusWrap"></div>
       </div>
     </section>
 
     <!-- 3. PROGRAM: 10 TAHAP BEKAL CERDAS -->
-    <section id="program" class="reveal bg-white border-y border-purple-100 py-12 sm:py-16">
+    <section id="program" class="reveal bg-white border-y border-purple-100 py-10 sm:py-16">
       <div class="max-w-6xl mx-auto px-4">
         <div class="mb-8">
           <span class="tag">Program Utama</span>
@@ -244,7 +253,7 @@
     </section>
 
     <!-- 4. KAMPANYE, KALKULATOR & FORMULIR DONASI -->
-    <section id="donasi-kampanye" class="reveal max-w-6xl mx-auto px-4 py-12 sm:py-16">
+    <section id="donasi-kampanye" class="reveal max-w-6xl mx-auto px-4 py-10 sm:py-16">
       <div class="mb-6">
         <span class="tag">Donasi &amp; Kampanye</span>
         <h2 class="h2">Kampanye Bekal Cerdas</h2>
@@ -261,8 +270,8 @@
         <p class="text-xs text-slate-500 mt-2">Target untuk 40 pelajar prasejahtera &amp; dhuafa (paket sekolah, pustaka wakaf, dan kelas belajar).</p>
       </div>
 
-      <div class="grid lg:grid-cols-12 gap-8 items-start">
-        <div class="lg:col-span-6 card space-y-5">
+      <div class="grid lg:grid-cols-12 gap-6 sm:gap-8 items-start">
+        <div class="lg:col-span-6 card space-y-5 min-w-0">
           <div><span class="text-xs font-bold text-amber-700 uppercase">1. Hitung Zakat</span><h3 class="text-lg font-bold text-sunDeep">Kalkulator Zakat</h3></div>
           <div id="tabZakat" class="flex flex-wrap gap-2" role="tablist"></div>
 
@@ -299,7 +308,7 @@
           </div>
         </div>
 
-        <div class="lg:col-span-6 card space-y-4">
+        <div class="lg:col-span-6 card space-y-4 min-w-0">
           <div><span class="tag">2. Formulir Donasi</span><h3 class="text-lg font-bold text-sunDeep">Tunaikan ZISWAF (Simulasi)</h3></div>
           <form id="formDonasi" class="space-y-4" novalidate>
             <div>
@@ -327,13 +336,13 @@
             </label>
             <button type="submit" id="btnKirim" class="btn w-full">Buat Transaksi Donasi</button>
           </form>
-          <div id="boxStruk" class="hidden p-4 rounded-xl bg-sunSoft border border-sunMain/30 text-xs sm:text-sm text-sunDeep leading-relaxed" aria-live="polite"></div>
+          <div id="boxStruk" class="hidden p-4 rounded-xl bg-sunSoft border border-sunMain/30 text-xs sm:text-sm text-sunDeep leading-relaxed break-words" aria-live="polite"></div>
         </div>
       </div>
     </section>
 
     <!-- 5. LAPORAN & TRANSPARANSI -->
-    <section id="laporan-transparansi" class="reveal bg-white border-y border-purple-100 py-12 sm:py-16">
+    <section id="laporan-transparansi" class="reveal bg-white border-y border-purple-100 py-10 sm:py-16">
       <div class="max-w-6xl mx-auto px-4 space-y-6">
         <div>
           <span class="tag">Laporan &amp; Transparansi</span>
@@ -341,17 +350,17 @@
           <p class="text-xs sm:text-sm text-slate-600 mt-1">Rumus akuntabilitas: <strong>Dana Masuk = Tersalur + Hak Amil/Operasional + Sisa Dana</strong>. Hak amil zakat dibatasi maksimal 1/8 (12,5%).</p>
         </div>
 
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" id="lapCards"></div>
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4" id="lapCards"></div>
 
         <div class="overflow-x-auto border border-purple-100 rounded-2xl">
-          <table class="w-full text-left text-xs sm:text-sm min-w-[600px]">
+          <table class="w-full text-left text-xs sm:text-sm min-w-[540px]">
             <thead class="bg-sunSoft/80 text-sunDeep border-b border-purple-200">
               <tr>
-                <th class="py-3 px-4">Jenis Dana / Akad</th>
-                <th class="py-3 px-4">Dana Masuk</th>
-                <th class="py-3 px-4">Hak Amil / Ops</th>
-                <th class="py-3 px-4">Tersalur</th>
-                <th class="py-3 px-4">Sisa Dana</th>
+                <th class="py-3 px-3 sm:px-4">Jenis Dana / Akad</th>
+                <th class="py-3 px-3 sm:px-4">Dana Masuk</th>
+                <th class="py-3 px-3 sm:px-4">Hak Amil / Ops</th>
+                <th class="py-3 px-3 sm:px-4">Tersalur</th>
+                <th class="py-3 px-3 sm:px-4">Sisa Dana</th>
               </tr>
             </thead>
             <tbody id="tabelAkad" class="divide-y divide-purple-50"></tbody>
@@ -362,14 +371,14 @@
         <div class="pt-2">
           <h3 class="text-base sm:text-lg font-bold text-sunDeep mb-3">Rekap Penerimaan Donasi (Nama Disamarkan)</h3>
           <div class="overflow-x-auto border border-purple-100 rounded-2xl">
-            <table class="w-full text-left text-xs sm:text-sm min-w-[540px]">
+            <table class="w-full text-left text-xs sm:text-sm min-w-[500px]">
               <thead class="bg-slate-50 text-slate-700 border-b border-purple-100">
                 <tr>
-                  <th class="py-2.5 px-4">No. Transaksi</th>
-                  <th class="py-2.5 px-4">Donatur</th>
-                  <th class="py-2.5 px-4">Jenis Dana</th>
-                  <th class="py-2.5 px-4">Nominal</th>
-                  <th class="py-2.5 px-4">Kanal</th>
+                  <th class="py-2.5 px-3 sm:px-4">No. Transaksi</th>
+                  <th class="py-2.5 px-3 sm:px-4">Donatur</th>
+                  <th class="py-2.5 px-3 sm:px-4">Jenis Dana</th>
+                  <th class="py-2.5 px-3 sm:px-4">Nominal</th>
+                  <th class="py-2.5 px-3 sm:px-4">Kanal</th>
                 </tr>
               </thead>
               <tbody id="tabelRekap" class="divide-y divide-purple-50"></tbody>
@@ -380,7 +389,7 @@
     </section>
 
     <!-- 6. GALERI BUKTI -->
-    <section id="galeri-bukti" class="reveal max-w-6xl mx-auto px-4 py-12 sm:py-16">
+    <section id="galeri-bukti" class="reveal max-w-6xl mx-auto px-4 py-10 sm:py-16">
       <div class="mb-8">
         <span class="tag">Galeri Bukti</span>
         <h2 class="h2">Dokumentasi Penyaluran (Simulasi)</h2>
@@ -390,7 +399,7 @@
     </section>
 
     <!-- 7. LEGALITAS & PERIZINAN -->
-    <section id="legalitas" class="reveal bg-white border-y border-purple-100 py-12 sm:py-16">
+    <section id="legalitas" class="reveal bg-white border-y border-purple-100 py-10 sm:py-16">
       <div class="max-w-6xl mx-auto px-4">
         <div class="mb-6">
           <span class="tag">Legalitas &amp; Perizinan</span>
@@ -398,12 +407,12 @@
           <p class="text-sm text-slate-600 mt-1">Seluruh nomor, akta, dan izin di bawah merupakan contoh data fiktif untuk keperluan simulasi akademik.</p>
         </div>
         <div class="overflow-x-auto border border-purple-100 rounded-2xl">
-          <table class="w-full text-left text-xs sm:text-sm min-w-[640px]">
+          <table class="w-full text-left text-xs sm:text-sm min-w-[560px]">
             <thead class="bg-sunSoft/80 text-sunDeep border-b border-purple-200">
               <tr>
-                <th class="py-3 px-4">Dokumen / Aspek</th>
-                <th class="py-3 px-4">Nomor / Keterangan (Fiktif)</th>
-                <th class="py-3 px-4">Instansi Penerbit (Dunia Nyata)</th>
+                <th class="py-3 px-3 sm:px-4">Dokumen / Aspek</th>
+                <th class="py-3 px-3 sm:px-4">Nomor / Keterangan (Fiktif)</th>
+                <th class="py-3 px-3 sm:px-4">Instansi Penerbit (Dunia Nyata)</th>
               </tr>
             </thead>
             <tbody id="tabelLegal" class="divide-y divide-purple-50"></tbody>
@@ -413,7 +422,7 @@
     </section>
 
     <!-- 8. INFORMASI -->
-    <section id="informasi" class="reveal max-w-4xl mx-auto px-4 py-12 sm:py-16">
+    <section id="informasi" class="reveal max-w-4xl mx-auto px-4 py-10 sm:py-16">
       <div class="mb-6"><span class="tag">Informasi</span><h2 class="h2">FAQ, Syarat &amp; Ketentuan, Privasi</h2></div>
       <div class="space-y-3 text-sm text-slate-700 leading-relaxed">
         <details class="card !p-4"><summary class="font-bold text-sunDeep cursor-pointer">Siapa sasaran penerima Program Bekal Cerdas?</summary><p class="mt-2">40 pelajar jenjang SD dan SMP dari keluarga prasejahtera &amp; dhuafa di wilayah Kota Yogyakarta dan sekitarnya yang telah melalui tahap survei rumah dan verifikasi penghasilan keluarga.</p></details>
@@ -430,13 +439,13 @@
     </section>
 
     <!-- 9. KONTAK -->
-    <section id="kontak" class="reveal bg-white border-t border-purple-100 py-12 sm:py-16">
-      <div class="max-w-6xl mx-auto px-4 grid lg:grid-cols-12 gap-8 items-start">
-        <div class="lg:col-span-5 space-y-3">
+    <section id="kontak" class="reveal bg-white border-t border-purple-100 py-10 sm:py-16">
+      <div class="max-w-6xl mx-auto px-4 grid lg:grid-cols-12 gap-6 sm:gap-8 items-start">
+        <div class="lg:col-span-5 space-y-3 min-w-0">
           <span class="tag">Kontak</span><h2 class="h2">Hubungi Kami</h2>
-          <div id="kontakInfo" class="space-y-2.5 text-xs sm:text-sm pt-2 text-slate-700"></div>
+          <div id="kontakInfo" class="space-y-2.5 text-xs sm:text-sm pt-2 text-slate-700 break-words"></div>
         </div>
-        <div class="lg:col-span-7 bg-sunCream border border-purple-100 rounded-2xl p-5 sm:p-6">
+        <div class="lg:col-span-7 bg-sunCream border border-purple-100 rounded-2xl p-4 sm:p-6 min-w-0">
           <h3 class="text-base sm:text-lg font-bold text-sunDeep mb-3">Kirim Pesan (Simulasi)</h3>
           <form id="formKontak" class="space-y-3.5" novalidate>
             <div class="grid sm:grid-cols-2 gap-3.5">
@@ -458,7 +467,7 @@
     <div class="max-w-6xl mx-auto px-4 space-y-3 text-xs sm:text-sm">
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
         <div class="flex items-center gap-2.5">
-          <svg class="w-8 h-8"><use href="#lg-khasanah"/></svg>
+          <svg class="w-8 h-8 shrink-0"><use href="#lg-khasanah"/></svg>
           <span class="font-bold text-white">KHASANAH · SIMULASI – TUGAS KULIAH</span>
         </div>
         <span class="text-amber-300 font-semibold text-xs">Program Bekal Cerdas Pelajar Prasejahtera</span>
@@ -616,29 +625,29 @@ const TAHAP_PROGRAM = [
   ["Penghimpunan", "Target Rp30.000.000 untuk membantu 40 pelajar prasejahtera, didukung 12 relawan pengajar. Kanal: QRIS, transfer bank syariah, virtual account, dan e-wallet (simulasi) melalui kampanye media sosial kampus."],
   ["Penerimaan & Pencatatan", "Setiap donasi mendapat nomor transaksi (TRX-xxxx) berstatus Menunggu lalu Berhasil. Hanya transaksi yang berhasil yang otomatis masuk ke rekap publik dan laporan dana."],
   ["Pemisahan per Akad & Jenis Filantropi", `Dana dipisah per akad, sedangkan donasi tenaga dan ilmu dicatat terpisah dari dana tunai:
-    <div class="mt-2 overflow-x-auto border border-purple-100 rounded-xl">
-      <table class="w-full text-xs text-left">
-        <thead class="bg-sunSoft text-sunDeep"><tr><th class="p-2">Jenis</th><th class="p-2">Penggunaan</th><th class="p-2">Nilai</th></tr></thead>
+    <div class="mt-2 overflow-x-auto border border-purple-100 rounded-xl max-w-full">
+      <table class="w-full text-[11px] sm:text-xs text-left">
+        <thead class="bg-sunSoft text-sunDeep"><tr><th class="p-2">Jenis</th><th class="p-2">Penggunaan</th><th class="p-2 whitespace-nowrap">Nilai</th></tr></thead>
         <tbody class="divide-y divide-purple-50">
-          <tr><td class="p-2 font-semibold">Zakat</td><td class="p-2">Paket pendidikan pelajar asnaf fakir/miskin</td><td class="p-2">${rp(8000000)}</td></tr>
-          <tr><td class="p-2 font-semibold">Infak/Sedekah</td><td class="p-2">Seragam, alat tulis, transport kelas belajar</td><td class="p-2">${rp(15000000)}</td></tr>
-          <tr><td class="p-2 font-semibold">Wakaf</td><td class="p-2">Rak pustaka dan buku bacaan (pokok dijaga)</td><td class="p-2">${rp(3000000)}</td></tr>
-          <tr><td class="p-2 font-semibold">Tenaga</td><td class="p-2">12 relawan mahasiswa × 12 jam pendampingan</td><td class="p-2">144 jam</td></tr>
-          <tr><td class="p-2 font-semibold">Ilmu</td><td class="p-2">Kelas baca-tulis-hitung dan mengaji</td><td class="p-2">24 pertemuan</td></tr>
+          <tr><td class="p-2 font-semibold">Zakat</td><td class="p-2">Paket pendidikan pelajar asnaf fakir/miskin</td><td class="p-2 whitespace-nowrap">${rp(8000000)}</td></tr>
+          <tr><td class="p-2 font-semibold">Infak/Sedekah</td><td class="p-2">Seragam, alat tulis, transport kelas belajar</td><td class="p-2 whitespace-nowrap">${rp(15000000)}</td></tr>
+          <tr><td class="p-2 font-semibold">Wakaf</td><td class="p-2">Rak pustaka dan buku bacaan (pokok dijaga)</td><td class="p-2 whitespace-nowrap">${rp(3000000)}</td></tr>
+          <tr><td class="p-2 font-semibold">Tenaga</td><td class="p-2">12 relawan mahasiswa × 12 jam pendampingan</td><td class="p-2 whitespace-nowrap">144 jam</td></tr>
+          <tr><td class="p-2 font-semibold">Ilmu</td><td class="p-2">Kelas baca-tulis-hitung dan mengaji</td><td class="p-2 whitespace-nowrap">24 pertemuan</td></tr>
         </tbody>
       </table>
     </div>`],
   ["Pengelolaan & Hak Amil", "Hak amil zakat ditetapkan 12,5% (batas maksimal 1/8) = Rp1.000.000. Biaya operasional infak 10% = Rp1.500.000 (cetak modul, konsumsi relawan, transport). Nazhir wakaf tidak mengambil imbalan (0%)."],
   ["Identifikasi & Verifikasi Penerima", "40 pelajar (22 SD, 18 SMP) dari keluarga prasejahtera & dhuafa di Yogyakarta. Verifikasi dilakukan melalui surat rekomendasi sekolah/RT, survei rumah, wawancara orang tua, serta indikator penghasilan di bawah UMK. Data pribadi anak dijaga kerahasiaannya."],
   ["Perencanaan Program Penyaluran", `Menggabungkan bantuan konsumtif (paket perlengkapan sekolah) dan produktif (kelas belajar &amp; rak pustaka) di Balai Belajar Komunitas, Yogyakarta:
-    <div class="mt-2 overflow-x-auto border border-purple-100 rounded-xl">
-      <table class="w-full text-xs text-left">
-        <thead class="bg-sunSoft text-sunDeep"><tr><th class="p-2">Waktu</th><th class="p-2">Kegiatan</th><th class="p-2">PIC</th></tr></thead>
+    <div class="mt-2 overflow-x-auto border border-purple-100 rounded-xl max-w-full">
+      <table class="w-full text-[11px] sm:text-xs text-left">
+        <thead class="bg-sunSoft text-sunDeep"><tr><th class="p-2 whitespace-nowrap">Waktu</th><th class="p-2">Kegiatan</th><th class="p-2 whitespace-nowrap">PIC</th></tr></thead>
         <tbody class="divide-y divide-purple-50">
-          <tr><td class="p-2">Sep 2026</td><td class="p-2">Survei rumah &amp; verifikasi 40 pelajar</td><td class="p-2">Ketua</td></tr>
-          <tr><td class="p-2">Okt–Nov 2026</td><td class="p-2">Kampanye penghimpunan dana</td><td class="p-2">Ketua</td></tr>
-          <tr><td class="p-2">14 Nov 2026</td><td class="p-2">Distribusi paket perlengkapan sekolah</td><td class="p-2">Bendahara</td></tr>
-          <tr><td class="p-2">Nov 2026–Jan 2027</td><td class="p-2">Kelas belajar &amp; literasi tiap Sabtu</td><td class="p-2">Relawan</td></tr>
+          <tr><td class="p-2 whitespace-nowrap">Sep 2026</td><td class="p-2">Survei rumah &amp; verifikasi 40 pelajar</td><td class="p-2 whitespace-nowrap">Ketua</td></tr>
+          <tr><td class="p-2 whitespace-nowrap">Okt–Nov 2026</td><td class="p-2">Kampanye penghimpunan dana</td><td class="p-2 whitespace-nowrap">Ketua</td></tr>
+          <tr><td class="p-2 whitespace-nowrap">14 Nov 2026</td><td class="p-2">Distribusi paket perlengkapan sekolah</td><td class="p-2 whitespace-nowrap">Bendahara</td></tr>
+          <tr><td class="p-2 whitespace-nowrap">Nov 2026–Jan 2027</td><td class="p-2">Kelas belajar &amp; literasi tiap Sabtu</td><td class="p-2 whitespace-nowrap">Relawan</td></tr>
         </tbody>
       </table>
     </div>`],
@@ -646,13 +655,13 @@ const TAHAP_PROGRAM = [
   ["Pelaporan kepada Donatur", "Laporan terbuka memuat rincian dana masuk, hak amil/operasional, dana tersalur, saldo sisa dana, serta perkembangan belajar penerima manfaat."],
   ["Pengawasan & Audit", "Bendahara mencocokkan mutasi kas setiap minggu. Dewan Pengawas Syariah (DPS) memeriksa kesesuaian akad, asnaf, dan porsi hak amil. Audit internal dilakukan di akhir siklus program."],
   ["Evaluasi Dampak & Tindak Lanjut", `Capaian terhadap 40 pelajar prasejahtera:
-    <div class="mt-2 overflow-x-auto border border-purple-100 rounded-xl">
-      <table class="w-full text-xs text-left">
-        <thead class="bg-sunSoft text-sunDeep"><tr><th class="p-2">Indikator</th><th class="p-2">Sebelum</th><th class="p-2">Sesudah</th></tr></thead>
+    <div class="mt-2 overflow-x-auto border border-purple-100 rounded-xl max-w-full">
+      <table class="w-full text-[11px] sm:text-xs text-left">
+        <thead class="bg-sunSoft text-sunDeep"><tr><th class="p-2">Indikator</th><th class="p-2 whitespace-nowrap">Awal</th><th class="p-2 whitespace-nowrap">Akhir</th></tr></thead>
         <tbody class="divide-y divide-purple-50">
-          <tr><td class="p-2">Pelajar berperlengkapan sekolah lengkap</td><td class="p-2">18%</td><td class="p-2 font-bold text-sunMain">92%</td></tr>
-          <tr><td class="p-2">Rata-rata nilai tes baca-hitung dasar</td><td class="p-2">54</td><td class="p-2 font-bold text-sunMain">71</td></tr>
-          <tr><td class="p-2">Tingkat kehadiran kelas belajar Sabtu</td><td class="p-2">–</td><td class="p-2 font-bold text-sunMain">85%</td></tr>
+          <tr><td class="p-2">Perlengkapan sekolah lengkap</td><td class="p-2 whitespace-nowrap">18%</td><td class="p-2 font-bold text-sunMain whitespace-nowrap">92%</td></tr>
+          <tr><td class="p-2">Rata-rata nilai baca-hitung</td><td class="p-2 whitespace-nowrap">54</td><td class="p-2 font-bold text-sunMain whitespace-nowrap">71</td></tr>
+          <tr><td class="p-2">Kehadiran kelas Sabtu</td><td class="p-2 whitespace-nowrap">–</td><td class="p-2 font-bold text-sunMain whitespace-nowrap">85%</td></tr>
         </tbody>
       </table>
     </div>
@@ -679,42 +688,42 @@ function renderStatis() {
           ${p.foto ? `<img src="${esc(p.foto)}" alt="Foto ${esc(p.nama)}" onerror="this.remove()" class="w-full h-full object-cover object-top absolute inset-0" />` : ""}
         </div>
         <div class="text-center sm:text-left min-w-0 flex-1">
-          <h3 class="text-lg font-bold text-sunDeep">${esc(p.nama)}</h3>
-          <p class="text-xs font-semibold text-sunMain">${esc(p.sub)}</p>
+          <h3 class="text-lg font-bold text-sunDeep break-words">${esc(p.nama)}</h3>
+          <p class="text-xs font-semibold text-sunMain break-words">${esc(p.sub)}</p>
           <p class="text-xs text-slate-600 mt-1.5 leading-relaxed">${esc(p.desk)}</p>
         </div>
       </div>
     </div>`).join("");
 
   $("program10Grid").innerHTML = TAHAP_PROGRAM.map(([judul, isi], idx) => `
-    <div class="bg-sunCream border border-purple-100 rounded-2xl p-4 sm:p-5 flex gap-3.5 items-start transition-all duration-300 hover:border-sunMain/40 hover:shadow-sm">
-      <div class="w-10 h-10 shrink-0 rounded-xl bg-gradient-to-br from-sunDeep to-sunMain text-amber-300 font-extrabold flex items-center justify-center text-sm shadow-sm">
+    <div class="bg-sunCream border border-purple-100 rounded-2xl p-4 sm:p-5 flex gap-3 items-start min-w-0">
+      <div class="w-9 h-9 sm:w-10 sm:h-10 shrink-0 rounded-xl bg-gradient-to-br from-sunDeep to-sunMain text-amber-300 font-extrabold flex items-center justify-center text-sm shadow-sm">
         ${idx + 1}
       </div>
-      <div class="min-w-0 flex-1">
-        <h3 class="text-base font-bold text-sunDeep">${judul}</h3>
-        <div class="text-xs sm:text-sm text-slate-600 mt-1.5 leading-relaxed">${isi}</div>
+      <div class="min-w-0 flex-1 overflow-hidden">
+        <h3 class="text-base font-bold text-sunDeep break-words">${judul}</h3>
+        <div class="text-xs sm:text-sm text-slate-600 mt-1.5 leading-relaxed break-words">${isi}</div>
       </div>
     </div>`).join("");
 
   $("galeriGrid").innerHTML = CONFIG.GALERI.map(g => `
-    <div class="card !p-0 overflow-hidden group">
+    <div class="card !p-0 overflow-hidden group min-w-0">
       <div class="h-44 overflow-hidden relative bg-sunDark">
         <div class="w-full h-full transition-transform duration-500 group-hover:scale-105">${g.svg}</div>
         <span class="absolute top-2.5 left-2.5 text-[10px] font-extrabold uppercase tracking-wider bg-black/45 text-amber-200 backdrop-blur-sm px-2.5 py-1 rounded-md">${esc(g.tgl)}</span>
       </div>
       <div class="p-4 text-xs text-slate-600 leading-relaxed space-y-1">
-        <h3 class="font-bold text-sm text-sunDeep leading-snug">${esc(g.judul)}</h3>
-        <p class="font-semibold text-sunMain">${esc(g.lok)}</p>
+        <h3 class="font-bold text-sm text-sunDeep leading-snug break-words">${esc(g.judul)}</h3>
+        <p class="font-semibold text-sunMain break-words">${esc(g.lok)}</p>
         <p>${esc(g.desk)}</p>
       </div>
     </div>`).join("");
 
   $("tabelLegal").innerHTML = CONFIG.LEGAL.map(r => `
     <tr class="hover:bg-sunSoft/30 transition-colors">
-      <td class="py-3 px-4 font-bold text-sunDeep">${esc(r[0])}</td>
-      <td class="py-3 px-4 text-slate-800 font-medium">${esc(r[1])}</td>
-      <td class="py-3 px-4 text-slate-600">${esc(r[2])}</td>
+      <td class="py-3 px-3 sm:px-4 font-bold text-sunDeep">${esc(r[0])}</td>
+      <td class="py-3 px-3 sm:px-4 text-slate-800 font-medium">${esc(r[1])}</td>
+      <td class="py-3 px-3 sm:px-4 text-slate-600">${esc(r[2])}</td>
     </tr>`).join("");
 
   $("kontakInfo").innerHTML = `
@@ -725,9 +734,9 @@ function renderStatis() {
     <p class="text-xs text-slate-500 pt-1">Seluruh data kontak di atas bersifat fiktif untuk simulasi akademik.</p>`;
 
   $("kanalWrap").innerHTML = CONFIG.KANAL.map((k, i) => `
-    <label class="flex items-start gap-2.5 p-3 rounded-xl border border-purple-200 hover:border-sunMain cursor-pointer bg-sunCream/70 transition">
-      <input type="radio" name="kanalBayar" value="${esc(k.v)}" ${i ? "" : "checked"} class="mt-0.5 accent-purple-700" />
-      <div><span class="font-bold block text-sunDeep">${esc(k.t)}</span><span class="text-slate-500">${esc(k.d)}</span></div>
+    <label class="flex items-start gap-2.5 p-3 rounded-xl border border-purple-200 hover:border-sunMain cursor-pointer bg-sunCream/70 transition min-w-0">
+      <input type="radio" name="kanalBayar" value="${esc(k.v)}" ${i ? "" : "checked"} class="mt-0.5 accent-purple-700 shrink-0" />
+      <div class="min-w-0"><span class="font-bold block text-sunDeep">${esc(k.t)}</span><span class="text-slate-500">${esc(k.d)}</span></div>
     </label>`).join("");
 
   $("quickNominal").innerHTML = [50000, 100000, 250000, 1000000].map(n =>
@@ -757,46 +766,46 @@ function renderLaporan() {
     { lbl: "Sisa Dana", val: sisaDana, cls: "bg-slate-50 border-slate-200 text-slate-900" }
   ];
   $("lapCards").innerHTML = cards.map(c => `
-    <div class="p-4 sm:p-5 rounded-2xl border ${c.cls} transition-transform duration-300 hover:-translate-y-0.5">
+    <div class="p-4 sm:p-5 rounded-2xl border ${c.cls}">
       <p class="text-[11px] font-extrabold uppercase tracking-wider opacity-80">${c.lbl}</p>
-      <p class="text-xl sm:text-2xl font-extrabold mt-1">${rp(c.val)}</p>
+      <p class="text-lg sm:text-2xl font-extrabold mt-1">${rp(c.val)}</p>
     </div>`).join("");
 
   const rows = AKAD_DATA.map(r => {
     const sisa = r.masuk - r.amil - r.salur;
     const persenAmil = ((r.amil / r.masuk) * 100).toFixed(1);
     return `<tr>
-      <td class="py-3 px-4 font-semibold text-sunDeep">${esc(r.jenis)}</td>
-      <td class="py-3 px-4">${rp(r.masuk)}</td>
-      <td class="py-3 px-4">${rp(r.amil)} <span class="text-xs text-slate-500">(${persenAmil}%)</span></td>
-      <td class="py-3 px-4 font-semibold text-sunMain">${rp(r.salur)}</td>
-      <td class="py-3 px-4 font-semibold">${rp(sisa)}</td>
+      <td class="py-3 px-3 sm:px-4 font-semibold text-sunDeep">${esc(r.jenis)}</td>
+      <td class="py-3 px-3 sm:px-4 whitespace-nowrap">${rp(r.masuk)}</td>
+      <td class="py-3 px-3 sm:px-4 whitespace-nowrap">${rp(r.amil)} <span class="text-xs text-slate-500">(${persenAmil}%)</span></td>
+      <td class="py-3 px-3 sm:px-4 font-semibold text-sunMain whitespace-nowrap">${rp(r.salur)}</td>
+      <td class="py-3 px-3 sm:px-4 font-semibold whitespace-nowrap">${rp(sisa)}</td>
     </tr>`;
   });
   if (donasiBaruTotal > 0) {
     rows.push(`<tr class="bg-amber-50/70">
-      <td class="py-3 px-4 font-bold text-amber-900">Donasi Baru (Sesi Simulasi Ini)</td>
-      <td class="py-3 px-4 font-bold">${rp(donasiBaruTotal)}</td>
-      <td class="py-3 px-4">${rp(0)}</td>
-      <td class="py-3 px-4">${rp(0)}</td>
-      <td class="py-3 px-4 font-bold text-amber-900">${rp(donasiBaruTotal)}</td>
+      <td class="py-3 px-3 sm:px-4 font-bold text-amber-900">Donasi Baru (Sesi Simulasi Ini)</td>
+      <td class="py-3 px-3 sm:px-4 font-bold whitespace-nowrap">${rp(donasiBaruTotal)}</td>
+      <td class="py-3 px-3 sm:px-4 whitespace-nowrap">${rp(0)}</td>
+      <td class="py-3 px-3 sm:px-4 whitespace-nowrap">${rp(0)}</td>
+      <td class="py-3 px-3 sm:px-4 font-bold text-amber-900 whitespace-nowrap">${rp(donasiBaruTotal)}</td>
     </tr>`);
   }
   $("tabelAkad").innerHTML = rows.join("");
   $("footAkad").innerHTML = `<tr>
-    <td class="py-3 px-4">TOTAL KESELURUHAN</td>
-    <td class="py-3 px-4">${rp(totalMasuk)}</td>
-    <td class="py-3 px-4">${rp(totalAmil)}</td>
-    <td class="py-3 px-4">${rp(totalSalur)}</td>
-    <td class="py-3 px-4">${rp(sisaDana)}</td>
+    <td class="py-3 px-3 sm:px-4">TOTAL KESELURUHAN</td>
+    <td class="py-3 px-3 sm:px-4 whitespace-nowrap">${rp(totalMasuk)}</td>
+    <td class="py-3 px-3 sm:px-4 whitespace-nowrap">${rp(totalAmil)}</td>
+    <td class="py-3 px-3 sm:px-4 whitespace-nowrap">${rp(totalSalur)}</td>
+    <td class="py-3 px-3 sm:px-4 whitespace-nowrap">${rp(sisaDana)}</td>
   </tr>`;
 
   $("tabelRekap").innerHTML = rekapDonatur.map(r => `<tr>
-    <td class="py-2.5 px-4 font-mono text-xs font-bold text-sunMain">${esc(r[0])}</td>
-    <td class="py-2.5 px-4 font-semibold">${esc(r[1])}</td>
-    <td class="py-2.5 px-4">${esc(r[2])}</td>
-    <td class="py-2.5 px-4 font-bold text-sunDeep">${rp(r[3])}</td>
-    <td class="py-2.5 px-4 text-slate-600">${esc(r[4])}</td>
+    <td class="py-2.5 px-3 sm:px-4 font-mono text-xs font-bold text-sunMain whitespace-nowrap">${esc(r[0])}</td>
+    <td class="py-2.5 px-3 sm:px-4 font-semibold whitespace-nowrap">${esc(r[1])}</td>
+    <td class="py-2.5 px-3 sm:px-4">${esc(r[2])}</td>
+    <td class="py-2.5 px-3 sm:px-4 font-bold text-sunDeep whitespace-nowrap">${rp(r[3])}</td>
+    <td class="py-2.5 px-3 sm:px-4 text-slate-600">${esc(r[4])}</td>
   </tr>`).join("");
 }
 
@@ -915,16 +924,27 @@ $("formKontak").addEventListener("submit", e => {
 });
 
 function initScrollReveal() {
+  const els = document.querySelectorAll(".reveal");
+  if (!("IntersectionObserver" in window)) {
+    els.forEach(el => el.classList.add("visible"));
+    return;
+  }
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
+      if (entry.isIntersecting || entry.boundingClientRect.top < window.innerHeight) {
         entry.target.classList.add("visible");
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.08 });
+  }, { threshold: 0.02, rootMargin: "0px 0px -20px 0px" });
 
-  document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+  els.forEach(el => {
+    if (el.getBoundingClientRect().top < window.innerHeight) {
+      el.classList.add("visible");
+    } else {
+      observer.observe(el);
+    }
+  });
 }
 
 renderStatis();
